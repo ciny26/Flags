@@ -1,18 +1,34 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HeaderComp></HeaderComp>
+    <CountryDetails v-if="changeState"></CountryDetails>
+    <CountrySeg v-else></CountrySeg>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HeaderComp from '@/components/HeaderComp.vue';
+import CountrySeg from '@/components/CountrySeg.vue';
+import CountryDetails from '@/components/CountryDetails.vue'; // Adjust the import path
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    HeaderComp,
+    CountrySeg,
+    CountryDetails
+  },
+  /* data() {
+    return {
+      focusState:false
+    }
+  }, */
+  computed:{
+     changeState(){
+      
+      return this.$store.getters.getFocusState
+     } 
   }
 }
 </script>
