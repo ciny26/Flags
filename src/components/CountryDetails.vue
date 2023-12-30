@@ -1,9 +1,8 @@
 <template>
-    <div class="h">
-      <div class="back-btn" @click="goBack">
+    <div id="h" :style="{backgroundColor:BackgroundColor, color:textColor }">
+      <div class="back-btn" @click="goBack" :style="{backgroundColor:ElementsColor }">
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
-          <!-- SVG path for the arrow icon -->
-          <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+          <path :style="{fill:textColor}" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
         </svg>
         <div>Back</div>
       </div>
@@ -30,7 +29,7 @@
             </div>
             <div class="borders" v-if="formattedBorders.length != 0">
                 <div class="border-text">Border countries:</div>
-                <div class="country-borders" v-for="(item,index) in formattedBorders" :key="index" >{{ item }}</div>
+                <div class="country-borders" v-for="(item,index) in formattedBorders" :key="index" :style="{backgroundColor:ElementsColor }">{{ item }}</div>
             </div>
             
             
@@ -44,7 +43,8 @@ export default {
     data(){
         return {
             clickedCountry:'',
-            borderCountries:[]
+            borderCountries:[],
+            darkMode:false
         }
     },
     methods:{
@@ -78,7 +78,7 @@ export default {
         },
         formattedBorders(){
            if(!this.setClickedValue.borders || this.setClickedValue.borders.length === 0 ){
-                console.log('no borders')
+                
                 return '';}
                 const borderCountriesCodes = this.setClickedValue.borders;
             
@@ -92,24 +92,45 @@ export default {
                 }})
                   
                 });
-                
-                
-                
-                
-                
-                
+          
             });
             
             return this.borderCountries
-            }
+            },
+            //color Stuffs
+            ElementsColor(){
+        if(this.$store.getters.getDarkModeStatus){
+                    return 'hsl(209, 23%, 22%)'
+                }
+                else{
+                    return 'white' 
+                }
+      },
+      BackgroundColor(){
+                if(this.$store.getters.getDarkModeStatus){
+                    return 'hsl(207, 26%, 17%)'
+                }
+                else{
+                    return 'hsl(0, 0%, 98%)' 
+                }
+        },
+            textColor(){
+                if(this.$store.getters.getDarkModeStatus){
+                    return 'white'
+                }
+                else{
+                    return 'hsl(200, 15%, 8%)' 
+                }
+        }
 
     }
 }
 </script>
 <style>
-    .h{
+    #h{
         display: flex;
         flex-direction: column;
+        height: calc(100vh - 50px);
     }
     
     .back-btn{
@@ -117,7 +138,7 @@ export default {
         display: flex;
         margin: 12px ;
         padding: 8px;
-        border: 1px solid blue;
+        
         cursor: pointer;
     }
     .back-btn>*{
@@ -170,7 +191,7 @@ export default {
         max-height: 38px;
         padding:0px 6px;
         margin: 0px 3px 2px 3px;
-        border: 1px blue solid;
+        
         border-radius: 6px;
         display: flex;
         align-items: center;

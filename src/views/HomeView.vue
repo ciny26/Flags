@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <HeaderComp></HeaderComp>
-    <CountryDetails v-if="changeState"></CountryDetails>
-    <CountrySeg v-else></CountrySeg>
+    <CountryDetails v-if="changeState" class="main"></CountryDetails>
+    <CountrySeg v-else class="detailss"></CountrySeg>
   </div>
 </template>
 
@@ -32,3 +32,12 @@ export default {
   }
 }
 </script>
+<style>
+  .home{
+    height: 100%;
+  }
+  .main{
+    height:fit-content;
+  }
+  
+</style>

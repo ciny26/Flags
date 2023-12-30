@@ -1,10 +1,10 @@
 import { createStore } from 'vuex'
-
 export default createStore({
   state: {
     clickedCountry:null,
     focusONCountry:false,
-    countries:[]
+    countries:[],
+    darkModeIsOn:false
   },
   getters: {
     getClickedCountry(state){
@@ -15,6 +15,9 @@ export default createStore({
     },
     getCountries(state){
       return state.countries
+    },
+    getDarkModeStatus(state){
+      return state.darkModeIsOn
     }
   },
   mutations:{
@@ -29,6 +32,10 @@ export default createStore({
     },
     setCountries(state,country){
       state.countries.push(country)
+    },
+    setDarkModeStatus(state){
+      state.darkModeIsOn = !state.darkModeIsOn
+      console.log(state.darkModeIsOn)
     }
   },
   actions: {

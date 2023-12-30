@@ -1,4 +1,4 @@
-{
+ export const d = {
   "data":[
    {
     "name": "Afghanistan",
