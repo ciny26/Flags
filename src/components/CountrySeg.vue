@@ -1,9 +1,8 @@
 <template>
-  <div class="seg-cont" :style="{backgroundColor:BackgroundColor , 
-    color:textColor}">
+  <div class="seg-cont" :style="{backgroundColor:BackgroundColor , color:textColor}">
     <div class="filter">
       <div class="search">
-        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+        <svg :style="{fill:textColor}" class="search-icon" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
       <input class="search-inp" type="search" :style="{backgroundColor:ElementsColor , color:textColor}" v-model="querySearch" placeholder="Search for your country...">
       </div>
       <select class="select-inp" v-model="Place" :style="{backgroundColor:ElementsColor , color:textColor}" @change="updateCountryList">
@@ -112,12 +111,8 @@ export default {
     return Number(population).toLocaleString();
   },
     async getCountry() {
-      
       try {
-        //const data = JSON.parse(d);
-        console.log(d)
         this.countries = d.data;
-        console.log(this.countries)
         this.$store.commit('setCountries', this.countries)
 
       } catch (error) {
@@ -132,10 +127,11 @@ export default {
   },
 };
 </script>
-<style scoped >
+<style >
   .seg-cont{
     
-    padding:1.5rem 0;
+    padding:2.6rem 0;
+    
   }
   .test{
       text-align: center;
@@ -150,7 +146,7 @@ export default {
   .country{
       cursor: pointer;
       width: 200px;
-      height: 354px;
+      height: 380px;
       margin: .8em;
       
       position: relative;
@@ -194,7 +190,8 @@ export default {
   .search-inp{
     text-align: center;
     outline: none;
-    width: 500px;
+    max-width: 500px;
+    min-width: 280px;
     height: 50px;
     margin-left: 12px;
     border: 0;
@@ -210,5 +207,16 @@ export default {
     margin-right: 12px;
     border: 0;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  @media (max-width:700px) {
+    .filter{
+      flex-direction: column;
+      justify-content: left;
+    }
+    .select-inp{
+     max-width: 97px;
+     height: 50px;
+     margin: 12px 0 0 12px;
+    }
   }
 </style> 

@@ -28,8 +28,8 @@
                 </div>
             </div>
             <div class="borders" v-if="formattedBorders.length != 0">
-                <div class="border-text">Border countries:</div>
-                <div class="country-borders" v-for="(item,index) in formattedBorders" :key="index" :style="{backgroundColor:ElementsColor }">{{ item }}</div>
+                <div class="border-text">Border countries :</div>
+                <div class="country-borders" v-for="(item,index) in formattedBorders" :key="index" :style="{backgroundColor:ElementsColor }">{{ index+1 }}.{{item}}</div>
             </div>
             
             
@@ -138,7 +138,6 @@ export default {
         display: flex;
         margin: 12px ;
         padding: 8px;
-        
         cursor: pointer;
     }
     .back-btn>*{
@@ -147,10 +146,11 @@ export default {
     }
     .country-details{
         width: 100%;
-        max-height: 60vh;
         display: flex;
     }
     .country-flag{
+        display: flex;
+        align-items: center;
         width: 50%;
         margin: 0 0.5rem;
     }
@@ -166,7 +166,7 @@ export default {
         padding: 0.2rem 0;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 3fr 1.5fr;
+        grid-template-rows: 1fr 2fr 1.5fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
     }
@@ -178,6 +178,7 @@ export default {
          display: grid;
          grid-template-columns: 1fr 1fr;
          grid-template-rows: 1fr;
+         height: fit-content;
     }
     .borders {
          grid-area: 3 / 1 / 4 / 2;
@@ -191,16 +192,53 @@ export default {
         max-height: 38px;
         padding:0px 6px;
         margin: 0px 3px 2px 3px;
-        
         border-radius: 6px;
         display: flex;
         align-items: center;
     }
     .border-text{
+        font-size: 1.4rem;
         max-height: 38px;
         display: flex;
         align-items: center;
         padding:0px 6px;
         margin: 0 3px 2px 3px;
+    }
+    @media  (max-width:700px) {
+        #h{
+            height: fit-content;
+        }
+        .country-details{
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+        }
+        .country-info{
+        
+        width: 60%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.4fr 1fr 1fr;
+        
+        }
+        .country-name { 
+        grid-area: 1 / 1 /2 / 2;
+     }
+    .country-det {
+         grid-area: 2 / 1 / 3 / 2;
+         display: grid;
+         grid-template-columns: 1fr;
+         grid-template-rows: 1fr;
+         height: fit-content;
+    }
+    .borders {
+         grid-area: 3 / 1 / 4 / 2;
+    }
+    .border-text{
+        padding: 0;
+        margin: 0;
+       
+        
+    }
+        
     }
 </style>

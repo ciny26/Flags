@@ -35,7 +35,6 @@ export default createStore({
     },
     setDarkModeStatus(state){
       state.darkModeIsOn = !state.darkModeIsOn
-      console.log(state.darkModeIsOn)
     }
   },
   actions: {

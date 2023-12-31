@@ -22,7 +22,6 @@ export default {
     methods: {
         toggleDarkMode(){
             this.$store.commit('setDarkModeStatus')
-            console.log(this.$store.getters.getDarkModeStatus)
         }
     },
     computed:{
@@ -41,7 +40,9 @@ export default {
         width: 100%;
         height: 50px;
         align-items: center;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
     }
     .cont>*{
         width: 50%;

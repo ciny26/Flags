@@ -11,22 +11,32 @@ components:{
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
-html{
-  height: 100%;
-  font-family: 'Nunito Sans', sans-serif;
-}
-body{
+html, body{
+  
   margin: 0;
-  height: 100%;
-}
+  padding: 0;
+  min-height: 100%;
+  
+  font-family: 'Nunito Sans', sans-serif;
+  }
+body{
+  
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  
+  font-family: 'Nunito Sans', sans-serif;
+  }
+
 #app {
  margin: 0;
  padding: 0;
- height: 100%;
+ min-height:inherit;
 }
-home-view{
-  height: 100%;
+#app>*{
+  min-height: inherit;
 }
+
 
 
 </style>

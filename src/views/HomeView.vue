@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HeaderComp></HeaderComp>
+    <HeaderComp id="header"></HeaderComp>
     <CountryDetails v-if="changeState" class="main"></CountryDetails>
     <CountrySeg v-else class="detailss"></CountrySeg>
   </div>
@@ -28,16 +28,14 @@ export default {
      changeState(){
       
       return this.$store.getters.getFocusState
-     } 
-  }
-}
+     } ,
+    
+}}
 </script>
 <style>
   .home{
-    height: 100%;
+    height: inherit;
   }
-  .main{
-    height:fit-content;
-  }
+  
   
 </style>
