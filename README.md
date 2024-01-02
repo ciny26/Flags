@@ -31,7 +31,11 @@ Switch between light and dark themes to suit your preference and reduce eye stra
 
 
 
-
+## Technologies
+1.Html
+2.CSS
+3.JS
+4.Vuejs
 
 ## Usage
 
